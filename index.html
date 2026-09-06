@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>API Diagnostic Center</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div class="background-grid"></div>
+
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <main class="app-shell">
+
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-mark">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div>
+                    <div class="brand-name">
+                        DIAGNOSTIC
+                    </div>
+
+                    <div class="brand-subtitle">
+                        API KEY INSPECTOR
+                    </div>
+                </div>
+            </div>
+
+            <div class="engine-status">
+                <span class="engine-dot"></span>
+                LIVE
+            </div>
+        </header>
+
+
+        <section class="workspace">
+
+            <section class="test-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <div class="section-label">
+                            TEST API KEY
+                        </div>
+
+                        <h1>
+                            Check your credential.
+                        </h1>
+                    </div>
+
+                    <div class="secure-badge">
+                        <span>⌁</span>
+                        NOT STORED
+                    </div>
+                </div>
+
+
+                <div class="field-group">
+
+                    <label for="provider">
+                        Provider
+                    </label>
+
+                    <div class="custom-select" id="providerSelect">
+
+                    <input
+                        type="hidden"
+                        id="provider"
+                        value="openai"
+                    />
+
+                    <button
+                        type="button"
+                        class="custom-select-trigger"
+                        id="providerTrigger"
+                    >
+                        <span id="providerSelected">OpenAI</span>
+                        <span class="custom-select-arrow">⌄</span>
+                    </button>
+
+                    <div
+                        class="custom-select-menu"
+                        id="providerMenu"
+                    >
+                        <button
+                            type="button"
+                            class="custom-option active"
+                            data-value="openai"
+                        >
+                            <span class="option-dot"></span>
+                            OpenAI
+                        </button>
+
+                        <button
+                            type="button"
+                            class="custom-option"
+                            data-value="gemini"
+                        >
+                            <span class="option-dot"></span>
+                            Google Gemini
+                        </button>
+                        <button
+                            type="button"
+                            class="custom-option"
+                            data-value="openrouter"
+                        >
+                            <span class="option-dot"></span>
+                            OpenRouter
+                        </button>
+                        <button
+                            type="button"
+                            class="custom-option"
+                            data-value="anthropic"
+                        >
+                            <span class="option-dot"></span>
+                            Anthropic
+                        </button>
+
+                        <button
+                            type="button"
+                            class="custom-option"
+                            data-value="grok"
+                        >
+                            <span class="option-dot"></span>
+                            xAI / Grok
+                        </button>
+
+                        <button
+                            type="button"
+                            class="custom-option"
+                            data-value="nvidia"
+                        >
+                            <span class="option-dot"></span>
+                            NVIDIA
+                        </button>
+                    </div>
+
+                </div>
+
+                </div>
+
+
+                <div class="field-group">
+
+                    <div class="field-label-row">
+
+                        <label for="apiKey">
+                            API Key
+                        </label>
+
+                        <span class="field-hint">
+                            Used only for this test
+                        </span>
+
+                    </div>
+
+
+                    <div class="key-input">
+
+                        <input
+                            id="apiKey"
+                            type="password"
+                            autocomplete="off"
+                            spellcheck="false"
+                            placeholder="Paste your API key"
+                        />
+
+                        <button
+                            id="toggleKey"
+                            type="button"
+                            class="input-action"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="testButton"
+                    class="run-button"
+                    type="button"
+                >
+                    <span class="button-text">
+                        Run diagnostic
+                    </span>
+
+                    <span class="button-arrow">
+                        →
+                    </span>
+                </button>
+
+
+                <div class="privacy-note">
+                    <span>⌁</span>
+
+                    Your credential is sent only for the
+                    diagnostic request. Never test keys you
+                    are not authorized to use.
+                </div>
+
+            </section>
+
+
+            <section
+                id="timelineCard"
+                class="timeline-card"
+            >
+
+                <div class="card-top">
+
+                    <div>
+                        <div class="section-label">
+                            LIVE TRACE
+                        </div>
+
+                        <h2>
+                            Diagnostic timeline
+                        </h2>
+                    </div>
+
+                    <div
+                        id="timelineStatus"
+                        class="trace-status"
+                    >
+                        IDLE
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="timeline"
+                    class="timeline"
+                >
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">
+                            ◌
+                        </div>
+
+                        <div>
+                            <strong>
+                                Ready
+                            </strong>
+
+                            <span>
+                                Paste a key to begin.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section
+                id="resultCard"
+                class="result-card"
+            >
+
+                <div class="result-header">
+
+                    <div>
+                        <div class="section-label">
+                            RESULT
+                        </div>
+
+                        <h2>
+                            Diagnostic status
+                        </h2>
+                    </div>
+
+                    <div
+                        id="resultIndicator"
+                        class="result-indicator idle"
+                    >
+                        <span></span>
+                        <label>Waiting</label>
+                    </div>
+
+                </div>
+
+
+                <div class="result-grid">
+
+                    <div class="metric">
+                        <span>STATUS</span>
+                        <strong id="status">
+                            —
+                        </strong>
+                    </div>
+
+                    <div class="metric diagnosis-metric">
+                        <span>DIAGNOSIS</span>
+
+                        <strong id="diagnosis">
+                            —
+                        </strong>
+
+                        <p id="diagnosisDescription">
+                            Run a diagnostic to see the result.
+                        </p>
+                    </div>
+
+                    <div class="metric">
+                        <span>LATENCY</span>
+                        <strong id="latency">
+                            —
+                        </strong>
+                    </div>
+
+                    <div class="metric">
+                        <span>ATTEMPTS</span>
+                        <strong id="attempts">
+                            —
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="retryPanel"
+                    class="retry-panel hidden"
+                >
+
+                    <div class="retry-icon">
+                        ↻
+                    </div>
+
+                    <div>
+
+                        <div class="retry-title">
+                            Retry guidance
+                        </div>
+
+                        <div
+                            id="retryMessage"
+                            class="retry-message"
+                        >
+                            —
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="retryCountdown"
+                        class="retry-countdown"
+                    >
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <footer>
+            API Diagnostic Center
+            <span>•</span>
+            Credentials are not intentionally stored
+        </footer>
+
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
